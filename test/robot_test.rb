@@ -15,67 +15,67 @@ class RobotTest < Minitest::Test
 		)
   end
 
-  # Check if robot is an instance of the robot class
+  # Test if robot is an instance of the robot class
   def test_robot_instance
   	assert_instance_of Robot, @robot
   end
 
-  # Check the storing of robot_name
+  # Test the storing of robot_name
   def test_robot_name
     assert_equal "TEST", @robot.robot_name
   end
 
-  # Check the storing of x_position
+  # Test the storing of x_position
  	def test_robot_x_position
     assert_equal 0, @robot.x_position
   end
 
-  # Check the storing of y_position
+  # Test the storing of y_position
  	def test_robot_y_position
     assert_equal 0, @robot.x_position
   end
 
-  # Check the storing of facing
+  # Test the storing of facing
  	def test_robot_facing
     assert_equal "NORTH", @robot.facing
   end
 
-  # Check the functionality of the hit north border
+  # Test the functionality of the hit north border
  	def test_robot_hit_north_border
     assert_equal false, @robot.y_hit_north_border?
   end
 
-  # Check the functionality of the hit south border
+  # Test the functionality of the hit south border
  	def test_robot_hit_south_border
     assert_equal true, @robot.y_hit_south_border?
   end
 
-  # Check the functionality of the move north edge
+  # Test the functionality of the move north edge
  	def test_robot_move_north_edge
     assert_equal false, @robot.y_move_to_north_edge?
   end
 
-  # Check the functionality of the move south edge
+  # Test the functionality of the move south edge
  	def test_robot_move_south_edge
     assert_equal true, @robot.y_move_to_south_edge?
   end
 
-  # Check the functionality of the hit west border
+  # Test the functionality of the hit west border
  	def test_robot_hit_west_border
     assert_equal true, @robot.x_hit_west_border?
   end
 
-  # Check the functionality of the hit east border
+  # Test the functionality of the hit east border
  	def test_robot_hit_east_border
     assert_equal false, @robot.x_hit_east_border?
   end
 
-  # Check the functionality of the move west edge
+  # Test the functionality of the move west edge
  	def test_robot_move_west_edge
     assert_equal true, @robot.x_move_to_west_edge?
   end
 
-  # Check the functionality of the move east edge
+  # Test the functionality of the move east edge
  	def test_robot_move_east_edge
     assert_equal false, @robot.x_move_to_east_edge?
   end
