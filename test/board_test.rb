@@ -15,12 +15,12 @@ class BoardTest < Minitest::Test
 		)
   end
 
-  # Check if board is an instance of the board class
+  # Test if board is an instance of the board class
   def test_board_instance
   	assert_instance_of Board, @board
   end
 
-  # Check if the find_robot would return an instance of robot class
+  # Test if the find_robot would return an instance of robot class
   def test_robot_name
   	assert_instance_of Robot, @board.find_robot("TEST")
   end
