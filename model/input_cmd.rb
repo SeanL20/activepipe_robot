@@ -20,17 +20,18 @@ class InputCmd
 			when /PLACE/
 				self.place_robot(robot_name, command)
 			when "LEFT"
-				puts "TEST02"
+				self.turn_left(robot_name)
 			when "RIGHT"
-				puts "TEST03"
+				self.turn_right(robot_name)
 			when "MOVE"
-				puts "TEST04"
+				self.move_robot(robot_name)
 			when "REPORT"
-				puts "TEST05"
+				self.report_position(robot_name)
 			end
 		end
 	end
 
+	# Place the robot with the command for the coordinates and facing.
 	def place_robot(robot_name, command)
 		coord = command.split(" ")[1].split(",")
 		x_coord = coord[0]
@@ -43,5 +44,75 @@ class InputCmd
 			facing: facing, 
 			board: board
 		)
+	end
+
+	# Turns the robot left if there is robot with the name found
+	def turn_left(robot_name)
+		robot = board.find_robot(robot_name)
+
+		if robot
+			case robot.facing
+			when "NORTH"
+				robot.facing = "WEST"
+			when "SOUTH"
+				robot.facing = "EAST"
+			when "EAST"
+				robot.facing = "NORTH"
+			when "WEST"
+				robot.facing = "SOUTH"
+			end
+		end
+	end
+
+	# Turns the robot right if there is robot with the name found
+	def turn_right(robot_name)
+		robot = board.find_robot(robot_name)
+
+		if robot
+			case robot.facing
+			when "NORTH"
+				robot.facing = "EAST"
+			when "SOUTH"
+				robot.facing = "WEST"
+			when "EAST"
+				robot.facing = "SOUTH"
+			when "WEST"
+				robot.facing = "NORTH"
+			end
+		end
+	end
+
+	# Moves The Robot By One Depending On The Facing.
+	def move_robot(robot_name)
+		robot = board.find_robot(robot_name)
+		if robot
+			case robot.facing
+			when "NORTH"
+				if !robot.y_hit_north_border? && robot.y_move_to_north_edge?
+					robot.y_posit = robot.y_posit + 1
+				end
+			when "SOUTH"
+				if !robot.y_hit_south_border? && robot.y_move_to_south_edge?
+					robot.y_posit = robot.y_posit - 1
+				end
+			when "EAST"
+				if !robot.x_hit_east_border? && robot.x_move_to_east_edge?
+					robot.x_posit = robot.x_posit + 1
+				end
+			when "WEST"
+				if !robot.x_hit_west_border? && robot.x_move_to_west_edge?
+					robot.x_posit = robot.x_posit - 1
+				end
+			end
+		end
+	end
+
+	def report_position(robot_name)
+		robot = board.find_robot(robot_name)
+
+		if robot
+			string = "#{robot.robot_name}: #{robot.x_posit},#{robot.y_posit},#{robot.facing}"
+			puts string
+		end
 	end
 end
