@@ -15,6 +15,11 @@ class RobotTest < Minitest::Test
 		)
   end
 
+  # Check if robot is an instance of the robot class
+  def test_robot_instance
+  	assert_instance_of Robot, @robot
+  end
+
   # Check the storing of robot_name
   def test_robot_name
     assert_equal "TEST", @robot.robot_name
