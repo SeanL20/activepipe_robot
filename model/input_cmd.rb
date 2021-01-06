@@ -26,7 +26,7 @@ class InputCmd
 			when "MOVE"
 				self.move_robot(robot_name)
 			when "REPORT"
-				self.report_position(robot_name)
+				puts self.report_position(robot_name)
 			end
 		end
 	end
@@ -112,7 +112,7 @@ class InputCmd
 
 		if robot != []
 			string = "#{robot.robot_name}: #{robot.x_position},#{robot.y_position},#{robot.facing}"
-			puts string
+			return string
 		end
 	end
 end
