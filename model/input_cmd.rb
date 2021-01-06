@@ -50,7 +50,7 @@ class InputCmd
 	def turn_left(robot_name)
 		robot = board.find_robot(robot_name)
 
-		if robot
+		if robot != []
 			case robot.facing
 			when "NORTH"
 				robot.facing = "WEST"
@@ -68,7 +68,7 @@ class InputCmd
 	def turn_right(robot_name)
 		robot = board.find_robot(robot_name)
 
-		if robot
+		if robot != []
 			case robot.facing
 			when "NORTH"
 				robot.facing = "EAST"
@@ -85,7 +85,7 @@ class InputCmd
 	# Moves The Robot By One Depending On The Facing.
 	def move_robot(robot_name)
 		robot = board.find_robot(robot_name)
-		if robot
+		if robot != []
 			case robot.facing
 			when "NORTH"
 				if !robot.y_hit_north_border? && robot.y_move_to_north_edge?
@@ -110,7 +110,7 @@ class InputCmd
 	def report_position(robot_name)
 		robot = board.find_robot(robot_name)
 
-		if robot
+		if robot != []
 			string = "#{robot.robot_name}: #{robot.x_posit},#{robot.y_posit},#{robot.facing}"
 			puts string
 		end
