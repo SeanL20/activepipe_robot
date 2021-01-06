@@ -89,19 +89,19 @@ class InputCmd
 			case robot.facing
 			when "NORTH"
 				if !robot.y_hit_north_border? && robot.y_move_to_north_edge?
-					robot.y_posit = robot.y_posit + 1
+					robot.y_position = robot.y_position + 1
 				end
 			when "SOUTH"
 				if !robot.y_hit_south_border? && robot.y_move_to_south_edge?
-					robot.y_posit = robot.y_posit - 1
+					robot.y_position = robot.y_position - 1
 				end
 			when "EAST"
 				if !robot.x_hit_east_border? && robot.x_move_to_east_edge?
-					robot.x_posit = robot.x_posit + 1
+					robot.x_position = robot.x_position + 1
 				end
 			when "WEST"
 				if !robot.x_hit_west_border? && robot.x_move_to_west_edge?
-					robot.x_posit = robot.x_posit - 1
+					robot.x_position = robot.x_position - 1
 				end
 			end
 		end
@@ -111,7 +111,7 @@ class InputCmd
 		robot = board.find_robot(robot_name)
 
 		if robot != []
-			string = "#{robot.robot_name}: #{robot.x_posit},#{robot.y_posit},#{robot.facing}"
+			string = "#{robot.robot_name}: #{robot.x_position},#{robot.y_position},#{robot.facing}"
 			puts string
 		end
 	end
